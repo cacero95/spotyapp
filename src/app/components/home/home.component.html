@@ -1,0 +1,7 @@
+<!---<ul>
+    <li *ngFor="let item of country">{{item.name}}: {{item.alpha3Code}} - Poblacion:{{item.population | number}}</li>
+</ul>
+-->
+<app-error [problema]="problema" *ngIf="error"></app-error>
+<app-loading *ngIf="load"></app-loading>
+<app-tarjeta [items]="newReleases"></app-tarjeta>

@@ -1,0 +1,54 @@
+<app-loading *ngIf="load"></app-loading>
+<div class="row animated fadeIn" *ngIf="!load">
+    <div class="col-2">
+        <img [src]="artista.images | noimage" class="img-thumbnail img-circle">
+    </div>
+    <br>
+    <div class="col">
+        <h3>{{artista.name}}: <small>Generos-</small> <small *ngFor="let genero of artista.genres">({{genero}})</small></h3>
+        <p>
+            <a [href]="artista.external_urls.spotify" target="_blank">Pagina web</a>
+        </p>
+    </div>
+
+    <div class="col-4 text-right">
+        <button class="btn btn-outline-danger" routerLink="/search">Come back</button>
+    </div>
+</div>
+
+<div class="row text-center m-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <h5>Image</h5>
+                </th>
+                <th>
+                    <h5>Album</h5>
+                </th>
+                <th>
+                    <h5>Cancion</h5>
+                </th>
+                <th>
+                    <h5>Vista-Previa</h5>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let song of tracks">
+                <td> <img [src]="song.album.images | noimage" class="img-thumb img-circle animated fadeIn" alt=""></td>
+                <td>
+                    <p>{{song.album.name}}</p>
+                </td>
+                <td>
+                    <p>{{song.name}}</p>
+                </td>
+                <td>
+                    <!--<audio [src]="song.preview_url" controls></audio>-->
+
+                    <iframe [src]="song.album.id | domseguro:'https://open.spotify.com/embed/album/'" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col">
+        <!--con el keyup.enter lanzo un evento cuando se oprime el enter-->
+        <input #search type="text" (keyup)="buscar(search.value)" class="form-control" placeholder="Busca tu artista">
+    </div>
+</div>
+<app-loading *ngIf="load" class="m-5"></app-loading>
+<app-tarjeta [items]="items"></app-tarjeta>
